@@ -28,7 +28,12 @@
 #include "client.h"
 #include "configuration.h"
 #include "device/device.h"
+#ifndef ANDROID
 #include "config.h"
+#else
+#include <cutils/properties.h>
+#define ENABLE_BOBLIGHTD "persist.vendor.boblightd.enable"
+#endif
 
 #define DEFAULTCONF "/etc/boblight.conf"
 
@@ -48,6 +53,11 @@ int main (int argc, char *argv[])
   bool   help;
   bool   bfork;
 
+#ifdef ANDROID
+  if (!property_get_bool(ENABLE_BOBLIGHTD, false))
+      return 0;
+#endif
+
   if (!ParseFlags(argc, argv, help, configfile, bfork) || help)
   {
     PrintHelpMessage();
@@ -59,7 +69,7 @@ int main (int argc, char *argv[])
     Daemonize();
     logtostderr = false;
   }
-  
+
   //init our logfile
   SetLogFile("boblightd.log");
   PrintFlags(argc, argv);

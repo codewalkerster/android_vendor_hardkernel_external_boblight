@@ -28,6 +28,9 @@ class CThread
 {
   public:
     CThread();
+#ifdef ANDROID
+    virtual
+#endif
     ~CThread();
     void StartThread();
     void StopThread();

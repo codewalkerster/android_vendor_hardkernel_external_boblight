@@ -29,6 +29,11 @@ CTimer::CTimer(volatile bool* stop /*=NULL*/)
   m_timerstop = stop;
 }
 
+#ifdef ANDROID
+CTimer::~CTimer()
+{}
+#endif
+
 void CTimer::SetInterval(int64_t usecs)
 {
   m_interval = usecs;

@@ -27,6 +27,9 @@ class CTimer
 {
   public:
     CTimer(volatile bool* stop = NULL);
+#ifdef ANDROID
+    virtual ~CTimer();
+#endif
     void SetInterval(int64_t usecs);
     virtual void Wait();
     void Reset();

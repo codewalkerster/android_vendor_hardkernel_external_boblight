@@ -20,7 +20,9 @@
 #include <sys/time.h>
 #include <assert.h>
 #include "condition.h"
+#ifndef ANDROID
 #include "config.h"
+#endif
 
 CCondition::CCondition()
 {

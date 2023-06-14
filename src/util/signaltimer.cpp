@@ -26,6 +26,11 @@ CSignalTimer::CSignalTimer(volatile bool* stop /*= NULL*/): CTimer(stop)
   m_signaled = false;
 }
 
+#ifdef ANDROID
+CSignalTimer::~CSignalTimer()
+{}
+#endif
+
 void CSignalTimer::Wait()
 {
   CLock lock(m_condition);

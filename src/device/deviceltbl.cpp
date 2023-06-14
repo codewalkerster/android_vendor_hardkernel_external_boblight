@@ -51,7 +51,7 @@ bool CDeviceLtbl::SetupDevice()
 
 bool CDeviceLtbl::WriteOutput()
 {
-  uint8_t prefix[4] = {0x55, 0xAA, 0x00, m_channels.size()};
+  uint8_t prefix[4] = {0x55, 0xAA, 0x00, static_cast<uint8_t>(m_channels.size())};
 
   //get the channel values from the clienshandler
   int64_t now = GetTimeUs();
@@ -114,7 +114,7 @@ bool CDeviceLtbl::OpenController()
   uint8_t buff[512];
   uint8_t prefix[2]    = {0x55, 0xAA};
   uint8_t open[2]      = {0x83, 0x00};
-  uint8_t getvalues[4] = {0x81, 0x02, 0x00, m_channels.size()};
+  uint8_t getvalues[4] = {0x81, 0x02, 0x00, static_cast<uint8_t>(m_channels.size())};
 
   if (m_isopened)
     return true; //nothing to do here

@@ -1,0 +1,4 @@
+prebuilt_etc {
+    name: "boblight.conf",
+    src: "boblight.conf",
+}

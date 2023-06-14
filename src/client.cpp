@@ -21,7 +21,9 @@
 
 #include <locale.h>
 
+#ifndef ANDROID
 #include "config.h"
+#endif
 
 #include "client.h"
 #include "util/lock.h"

@@ -31,7 +31,9 @@
 #include "tcpsocket.h"
 #include "misc.h"
 
+#ifndef ANDROID
 using namespace std;
+#endif
 
 void CTcpData::SetData(uint8_t* data, int size, bool append)
 {

@@ -23,6 +23,9 @@ class CSignalTimer : public CTimer
 {
   public:
     CSignalTimer(volatile bool* stop = NULL);
+#ifdef ANDROID
+    virtual ~CSignalTimer();
+#endif
     void Wait();
     void Signal();
 

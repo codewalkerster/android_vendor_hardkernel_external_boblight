@@ -22,7 +22,9 @@
 #include <string>
 #include <vector>
 
+#ifndef ANDROID
 #include "config.h"
+#endif
 #include "light.h"
 #include "client.h"
 #include "device/device.h"

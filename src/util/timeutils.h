@@ -20,7 +20,9 @@
 #define TIMEUTILS
 
 #include "inclstdint.h"
+#ifndef ANDROID
 #include "config.h"
+#endif
 
 #include <time.h>
 #include <sys/time.h>

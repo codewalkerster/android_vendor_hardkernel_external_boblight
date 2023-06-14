@@ -50,6 +50,9 @@ class CTcpSocket //base class
 {
   public:
     CTcpSocket();
+#ifdef ANDROID
+    virtual
+#endif
     ~CTcpSocket();
 
     virtual int Open(std::string address, int port, int usectimeout = -1);

@@ -32,7 +32,8 @@
 #include "config.h"
 #else
 #include <cutils/properties.h>
-#define ENABLE_BOBLIGHTD "persist.vendor.boblightd.enable"
+#define BOBLIGHTD_ENABLE "persist.vendor.boblightd.enable"
+#define BOBLIGHTD_CONFIG_PATH "persist.vendor.boblightd.config"
 #endif
 
 #define DEFAULTCONF "/etc/boblight.conf"
@@ -54,7 +55,7 @@ int main (int argc, char *argv[])
   bool   bfork;
 
 #ifdef ANDROID
-  if (!property_get_bool(ENABLE_BOBLIGHTD, false))
+  if (!property_get_bool(BOBLIGHTD_ENABLE, false))
       return 0;
 #endif
 
@@ -166,7 +167,9 @@ bool ParseFlags(int argc, char *argv[], bool& help, string& configfile, bool& fo
 {
   help = false;
   fork = false;
-  configfile = DEFAULTCONF;
+  char propBuf[PROPERTY_VALUE_MAX];
+  property_get(BOBLIGHTD_CONFIG_PATH, propBuf, DEFAULTCONF);
+  configfile = propBuf;
 
   opterr = 0; //no getopt errors to stdout, we bitch ourselves
   int c;

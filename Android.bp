@@ -1,9 +1,0 @@
-prebuilt_etc {
-    name: "boblight.conf",
-    src: "boblight.conf",
-}
-
-prebuilt_etc {
-    name: "ws2801.conf",
-    src: "conf/ws2801.conf",
-}

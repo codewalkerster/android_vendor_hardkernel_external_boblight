@@ -68,7 +68,7 @@ string CLight::SetOption(const char* option, bool& send)
   if (strname == #name) \
   { \
     type value; \
-    if (#type == "bool")\
+    if (!strcmp(#type,  "bool"))\
     {\
       if (!StrToBool(stroption, *(bool*)(&value)))\
         return "invalid value " + stroption + " for option " + strname + " with type " + #type; \
